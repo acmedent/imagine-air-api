@@ -1,0 +1,24 @@
+{
+  "name": "imagine-air-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js",
+    "dev": "nodemon app.js"
+  },
+  "author": "Rodrigo Garbulha",
+  "license": "ISC",
+  "dependencies": {
+    "@hapi/hapi": "^20.0.3",
+    "@sendgrid/mail": "^7.4.0",
+    "boom": "^7.3.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "moment": "^2.29.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.6"
+  }
+}
