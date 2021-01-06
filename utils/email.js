@@ -7,8 +7,8 @@ const sendEmail = (data) => {
     console.log(data);
 
     const msg = {
-      to: 'rgarbulha@imagineairsystems.com',
-      from: 'info@imagineairsystems.com', // Use the email address or domain you verified above
+      to: process.env.TO_EMAIL,
+      from: process.env.FROM_EMAIL, // Use the email address or domain you verified above
       reply_to: data.email,
       subject: data.subject,
       text: data.message + data.name + data.company + data.phone,
