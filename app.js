@@ -8,8 +8,8 @@ const routes = require('./routes');
 
 const init = async () => {
   const server = Hapi.server({
-    port: process.env.PORT || 3005,
-    host: 'localhost',
+    port: process.env?.PORT ?? 3005,
+    host: process.env?.PORT ? '0.0.0.0' : 'localhost',
   });
 
   server.route({
