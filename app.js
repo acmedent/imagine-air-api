@@ -1,5 +1,5 @@
 'use strict';
-
+const moment = require('moment');
 const Hapi = require('@hapi/hapi');
 require('dotenv').config();
 
@@ -8,15 +8,30 @@ const routes = require('./routes');
 
 const init = async () => {
   const server = Hapi.server({
-    port: process.env?.PORT ?? 3005,
-    host: process.env?.PORT ? '0.0.0.0' : 'localhost',
+    port: process.env.PORT || 3005,
+    host: process.env.PORT ? '0.0.0.0' : 'localhost',
   });
 
   server.route({
     method: 'GET',
     path: '/',
     handler: (request, h) => {
-      return { message: 'Hello!' };
+      // uptime definition
+      const uptime = moment
+        .utc(
+          moment
+            .duration(moment(new Date()).diff(server.info.started))
+            .asMilliseconds()
+        )
+        .format('HH:mm:ss');
+
+      // default response
+      return {
+        host: 'imagineairsystems.com',
+        build: '1.0',
+        version: 'v1',
+        uptime: uptime,
+      };
     },
   });
 
